@@ -1,0 +1,41 @@
+app:
+  config:
+    keycloak:
+      server-url: http://localhost:8080/auth
+      realm: javatodev-internet-banking
+      clientId: javatodev-internet-banking-core-client
+      client-secret: f02b13d2-e644-4e79-bb2b-58bc50a7ce8c
+
+spring:
+  application:
+    name: internet-banking-user-service
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    url: jdbc:mysql://localhost:3306/banking_core_user_service
+    username: root
+    password: Welcome@#123!
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+info:
+  app:
+    name: ${spring.application.name}
+
+server:
+  port: 9093
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9091/eureka
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
